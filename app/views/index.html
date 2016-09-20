@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+		<title>Login Registration</title>
+	</head>
+	<body>
+    {% with messages = get_flashed_messages(category_filter = ['regis_errors']) %}
+    	{% if messages %}
+    		{% for message in messages %}
+    			<p id="flag">{{message}}</p>
+    		{% endfor %}
+    	{% endif %}
+    {% endwith %}
+	<h2>Welcome!</h2> 
+	<DIV class="welcome">
+		<h4>register</h4>
+		<form action="/create" method="POST">
+			Name:<br>
+			<input type="text" name="name"><br>
+			Alias:<br>
+			<input type="text" name="alias"><br>
+			Day of Birth:<br>
+			<input type="date" name="dob"><br>	
+			Email:<br>
+			<input type="text" name="email"><br>
+			Password:<br>
+			<input type="password" name="password"><br>
+			Confirmpassword:<br>
+			<input type="password" name="comfirmpw"><br>
+			<br>
+			<br>
+			<input type="submit" value="Register">
+		</form>
+	</DIV>
+	<DIV class="welcome">
+		<h4>Login</h4>
+		<form action="/login" method="POST">
+			 Email:<br>
+            <input type="text" name="email"><br>
+            Password:<br>
+            <input type="password" name="password"><br>
+            <br>
+            <br>
+            <input type="submit" value="Login">
+		</form>
+	</DIV>
+
+
+
+
+
+
+
+	</body>

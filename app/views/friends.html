@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+		<title>Friends</title>
+	</head>
+	<body>
+    <a href="/logout">Log out</a>
+    <h2>Hello: {{session['alias']}}</h2>
+    <p>Here is a list of yourfriends:</p>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {%for z in friends%}
+            <tbody>
+                 <tr>
+                    <th>{{z['alias']}}</th>
+                    <th><a href="/view/{{z['id']}}" >View profile</a>
+                    <form a
+                        <a href="">Remove as friend</a></th>
+                </tr>
+            </tbody>
+            {%endfor %}
+        </table>
+    </div>
+    <p>Other user not on your friend list</p>
+     <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {%for x in users%}
+            <tbody>
+                 <tr>
+                    <th><a href="/view/{{x['id']}}" >{{x['alias']}}</a></th>
+                    <th><form action="/addfriends" method="POST">
+                        <input type="hidden" name="friend" value="{{x['id']}}">
+                        <input type="hidden" name="user" value="{{session['id']}}">
+                        <input type="submit" value="Add ass Friend" >
+                    </form></th>
+                </tr>
+            </tbody>
+            {%endfor%}
+        </table>
+
+
+
+
+	</body>
+</html>
